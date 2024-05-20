@@ -1,4 +1,4 @@
-function Grid() {
+function Grid({ size }) {
   return <></>;
 }
 

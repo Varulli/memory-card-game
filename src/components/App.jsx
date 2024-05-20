@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Grid from "./Grid";
 import "../styles/App.css";
 
 function App() {
@@ -31,7 +32,7 @@ function App() {
         />
       </div>
 
-      <div className="card-grid"></div>
+      <Grid size={numCards} />
     </>
   );
 }
