@@ -61,9 +61,11 @@ function Grid({ size }) {
 
   const handleClick = (id) => {
     if (cardData.get(id).selected) {
-      setCardData((prevCardData) =>
-        new Map(prevCardData).forEach((card) => (card.selected = false))
-      );
+      setCardData((prevCardData) => {
+        const newCardData = new Map(prevCardData);
+        newCardData.forEach((card) => (card.selected = false));
+        return newCardData;
+      });
       setScore(0);
     } else {
       setCardData((prevCardData) =>
@@ -79,14 +81,18 @@ function Grid({ size }) {
 
   return (
     <div className="grid">
-      {getPermutation().map(({ id, name, image }) => (
-        <Card
-          key={id}
-          image={image}
-          description={name}
-          handleClick={() => handleClick(id)}
-        />
-      ))}
+      {loading ? (
+        <Loading />
+      ) : (
+        getPermutation().map(({ id, name, image }) => (
+          <Card
+            key={id}
+            image={image}
+            description={name}
+            handleClick={() => handleClick(id)}
+          />
+        ))
+      )}
     </div>
   );
 }
