@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Card from "./Card";
 
 const cardData = new Map();
 
@@ -32,6 +33,20 @@ function Grid({ size }) {
     getCardData(size);
   }, [size]);
 
+  function getPermutation() {
+    const permutation = [];
+    const idBucket = Array.from(cardData.keys());
+
+    while (idBucket.length > 0) {
+      const index = Math.floor(Math.random() * idBucket.length);
+      const id = idBucket.splice(index, 1)[0];
+      const { name, image } = cardData.get(id);
+      permutation.push({ id, name, image });
+    }
+
+    return permutation;
+  }
+
   const handleClick = (id) => {
     if (cardData.get(id).selected) {
       for (const data of cardData) data.selected = false;
@@ -43,7 +58,18 @@ function Grid({ size }) {
     }
   };
 
-  return <div className="grid">{}</div>;
+  return (
+    <div className="grid">
+      {getPermutation().map(({ id, name, image }) => (
+        <Card
+          key={id}
+          image={image}
+          description={name}
+          handleClick={() => handleClick(id)}
+        />
+      ))}
+    </div>
+  );
 }
 
 export default Grid;
