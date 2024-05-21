@@ -3,4 +3,12 @@
   min-height: 117px;
   min-width: 153px;
   border: none;
+  position: relative;
+}
+
+.card figcaption {
+  position: absolute;
+  bottom: .1rem;
+  left: 50%;
+  transform: translateX(-50%);
 }
