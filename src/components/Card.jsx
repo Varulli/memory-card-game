@@ -1,8 +1,12 @@
 function Card({ image, description, handleClick }) {
   return (
-    <div className="card" onClick={handleClick}>
-      <img src={image} alt={description + " card"} />
-    </div>
+    <button type="button" className="card" onClick={handleClick}>
+      <figure>
+        <img src={image} alt={description + " sprite"} />
+        <figcaption>{description}</figcaption>
+      </figure>
+      <caption></caption>
+    </button>
   );
 }
 
