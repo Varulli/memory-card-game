@@ -1,12 +1,13 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 
 const ellipses = ["", ".", "..", "..."];
-let index = 0;
 
 function Loading() {
+  const [index, setIndex] = useState(0);
+
   useEffect(() => {
     const interval = setInterval(() => {
-      index = (index + 1) % ellipses.length;
+      setIndex((prevIndex) => (prevIndex + 1) % ellipses.length);
     }, 500);
 
     return () => clearInterval(interval);

@@ -7,7 +7,7 @@ function App() {
 
   const handleInputChange = (e) => {
     const value = parseInt(e.target.value);
-    setNumCards(isNaN(value) || value < 1 ? 1 : value > 100 ? 100 : value);
+    setNumCards(isNaN(value) || value < 1 ? 1 : value > 30 ? 30 : value);
   };
 
   return (
@@ -23,7 +23,7 @@ function App() {
           id="number-of-cards"
           value={numCards}
           min={1}
-          max={100}
+          max={30}
           step={1}
           onChange={handleInputChange}
           onKeyDown={(e) =>
