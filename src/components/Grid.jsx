@@ -40,6 +40,7 @@ function Grid({ size }) {
     fetchCardData(size).then((newCardData) => {
       if (!ignore) {
         setCardData(newCardData);
+        setScore(0);
         setLoading(false);
       }
     });
