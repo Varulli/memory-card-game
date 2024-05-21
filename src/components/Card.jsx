@@ -5,7 +5,6 @@ function Card({ image, description, handleClick }) {
         <img src={image} alt={description + " sprite"} />
         <figcaption>{description}</figcaption>
       </figure>
-      <caption></caption>
     </button>
   );
 }
