@@ -32,6 +32,17 @@ function Grid({ size }) {
     getCardData(size);
   }, [size]);
 
+  const handleClick = (id) => {
+    if (cardData[id].selected) {
+      for (const data of cardData) data.selected = false;
+      setScore(0);
+    } else {
+      cardData[id].selected = true;
+      setScore(score + 1);
+      setHighScore(Math.max(score + 1, highScore));
+    }
+  };
+
   return <></>;
 }
 
