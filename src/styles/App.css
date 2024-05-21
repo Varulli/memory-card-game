@@ -16,7 +16,8 @@
 }
 
 .info input {
-  max-width: 3rem;
+  max-width: 3.1rem;
   margin-left: .3rem;
-  border-radius: .4rem;
+  padding: .1rem;
+  border-radius: .5rem;
 }

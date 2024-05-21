@@ -1,0 +1,6 @@
+.card {
+  box-sizing: content-box;
+  min-height: 117px;
+  min-width: 153px;
+  border: none;
+}
