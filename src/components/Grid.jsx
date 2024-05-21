@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Card from "./Card";
 import Loading from "./Loading";
+import "../styles/Grid.css";
 
 async function fetchCardData(size) {
   const cardData = new Map();
