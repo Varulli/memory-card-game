@@ -29,7 +29,7 @@ async function fetchCardData(size) {
 function Grid({ size }) {
   const [cardData, setCardData] = useState(new Map());
   const [score, setScore] = useState(0);
-  const [highScore, setHighScore] = useState(0);
+  const [highscore, sethighscore] = useState(0);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -75,12 +75,17 @@ function Grid({ size }) {
         })
       );
       setScore(score + 1);
-      setHighScore(Math.max(score + 1, highScore));
+      sethighscore(Math.max(score + 1, highscore));
     }
   };
 
   return (
     <div className="grid">
+      <div className="score">
+        score: {score}
+        <br />
+        highscore: {highscore}
+      </div>
       {loading ? (
         <Loading />
       ) : (
