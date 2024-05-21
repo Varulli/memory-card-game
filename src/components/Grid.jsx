@@ -1,26 +1,26 @@
 import { useState, useEffect } from "react";
 
-const cardData = [];
+const cardData = new Map();
 
 async function getCardData(size) {
-  cardData.length = 0;
+  cardData.clear();
 
   for (let i = 0; i < size; i++) {
     let id;
     do {
       id = Math.floor(Math.random() * 649) + 1;
-    } while (cardData[id]);
+    } while (cardData.has(id));
 
     const response = await fetch(`https://pokeapi.co/api/v2/pokemon/{id}`);
     const data = await response.json();
 
-    cardData[id] = {
+    cardData.set(id, {
       name: data.name,
       image:
         data.sprites.versions["generation-v"]["black-white"].animated
           .front_default,
       selected: false,
-    };
+    });
   }
 }
 
@@ -33,17 +33,17 @@ function Grid({ size }) {
   }, [size]);
 
   const handleClick = (id) => {
-    if (cardData[id].selected) {
+    if (cardData.get(id).selected) {
       for (const data of cardData) data.selected = false;
       setScore(0);
     } else {
-      cardData[id].selected = true;
+      cardData.get(id).selected = true;
       setScore(score + 1);
       setHighScore(Math.max(score + 1, highScore));
     }
   };
 
-  return <></>;
+  return <div className="grid">{}</div>;
 }
 
 export default Grid;
