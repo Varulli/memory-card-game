@@ -1,0 +1,22 @@
+#root {
+  display: flex;
+}
+
+.info {
+  padding: 1rem;
+  /* min-width: 10rem; */
+}
+
+.info h1 {
+  margin-bottom: 2rem;
+}
+
+.info p {
+  margin-bottom: 1rem;
+}
+
+.info input {
+  max-width: 3rem;
+  margin-left: .3rem;
+  border-radius: .4rem;
+}

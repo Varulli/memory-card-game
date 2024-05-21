@@ -16,20 +16,22 @@ function App() {
         <h1>Memory Card</h1>
         <p>Click consecutive unique cards to increase your score.</p>
 
-        <label htmlFor="number-of-cards">Number of Cards:</label>
-        <input
-          type="number"
-          name="number-of-cards"
-          id="number-of-cards"
-          value={numCards}
-          min={1}
-          max={30}
-          step={1}
-          onChange={handleInputChange}
-          onKeyDown={(e) =>
-            ["e", "E", "+", "-"].includes(e.key) && e.preventDefault()
-          }
-        />
+        <label>
+          Number of Cards:
+          <input
+            type="number"
+            name="number-of-cards"
+            id="number-of-cards"
+            value={numCards}
+            min={1}
+            max={30}
+            step={1}
+            onChange={handleInputChange}
+            onKeyDown={(e) =>
+              ["e", "E", "+", "-"].includes(e.key) && e.preventDefault()
+            }
+          />
+        </label>
       </div>
 
       <Grid size={numCards} />
