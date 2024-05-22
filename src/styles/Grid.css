@@ -1,5 +1,6 @@
 .score {
   font-size: 1.4rem;
+  font-weight: bold;
   color: var(--color-secondary);
   text-align: right;
   position: fixed;

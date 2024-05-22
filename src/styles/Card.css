@@ -1,5 +1,5 @@
 .card {
-  background-color: transparent;
+  background-color: var(--color-secondary);
   box-sizing: content-box;
   min-height: calc(117px + 1rem);
   border: none;
@@ -8,6 +8,8 @@
 }
 
 .card img {
+  position: relative;
+  z-index: 1;
   transform: scale(1.5) translateY(-.5rem);
 }
 
@@ -22,7 +24,7 @@
 
 .card:hover {
   cursor: pointer;
-  z-index: 1;
+  z-index: 2;
   transform: scale(1.03);
   box-shadow: 0 0 1rem .4rem var(--color-primary-light);
 }

@@ -68,6 +68,7 @@ function Grid({ size }) {
       const { name, image } = cardData.get(id);
       permutation.push({ id, name, image });
     }
+
     return permutation;
   }
 
@@ -91,6 +92,8 @@ function Grid({ size }) {
     }
   };
 
+  const permutation = getPermutation();
+
   return (
     <div className="grid">
       <div className="score">
@@ -101,7 +104,7 @@ function Grid({ size }) {
       {loading ? (
         <Loading />
       ) : (
-        getPermutation().map(({ id, name, image }) => (
+        permutation.map(({ id, name, image }) => (
           <Card
             key={id}
             image={image}
