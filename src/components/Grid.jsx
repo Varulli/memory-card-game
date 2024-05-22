@@ -41,7 +41,8 @@ function Grid({ size }) {
       if (!ignore) {
         setCardData(newCardData);
         setScore(0);
-        setLoading(false);
+        // setLoading(false);
+        setTimeout(() => setLoading(false), 3000);
       }
     });
 

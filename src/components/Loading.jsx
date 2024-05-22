@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import "../styles/Loading.css";
 
 const ellipses = ["", ".", "..", "..."];
 
