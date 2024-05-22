@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Grid from "./Grid";
-import "../styles/App.css";
+import Grid from "./components/Grid";
+import "./styles/App.css";
 
 function App() {
   const [numCards, setNumCards] = useState(10);
