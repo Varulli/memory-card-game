@@ -1,8 +1,7 @@
-# React + Vite
+# memory-card-game
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A memory game wherein the player attempts to click cards consecutively without repeats.
 
-Currently, two official plugins are available:
+[Link to the site](https://aquamarine-alpaca-b61cd8.netlify.app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![memory-card-game-demo](https://github.com/Varulli/memory-card-game/assets/120419874/01f248b6-dc25-423b-9c63-9ec59979d09f)
