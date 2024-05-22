@@ -7,9 +7,9 @@
 }
 
 .grid {
-  padding: .1rem;
+  padding: .5rem;
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(153px, 1fr));
-  gap: .1rem;
+  grid-template-columns: repeat(auto-fit, minmax(153px, 1fr));
+  gap: .2rem;
 }

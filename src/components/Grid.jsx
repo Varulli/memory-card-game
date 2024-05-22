@@ -30,7 +30,7 @@ async function fetchCardData(size) {
 function Grid({ size }) {
   const [cardData, setCardData] = useState(new Map());
   const [score, setScore] = useState(0);
-  const [highscore, sethighscore] = useState(0);
+  const [highscore, setHighscore] = useState(0);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -41,8 +41,9 @@ function Grid({ size }) {
       if (!ignore) {
         setCardData(newCardData);
         setScore(0);
-        // setLoading(false);
-        setTimeout(() => setLoading(false), 3000);
+        setHighscore(0);
+        setLoading(false);
+        // setTimeout(() => setLoading(false), 3000);
       }
     });
 
@@ -78,7 +79,7 @@ function Grid({ size }) {
         })
       );
       setScore(score + 1);
-      sethighscore(Math.max(score + 1, highscore));
+      setHighscore(Math.max(score + 1, highscore));
     }
   };
 
