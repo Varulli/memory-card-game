@@ -3,8 +3,11 @@
 }
 
 .info {
-  padding: 1rem;
-  flex: 0 0 15rem;
+  padding: 1rem 2rem 1rem 1rem;
+  flex: 0 0 17rem;
+  background: rgb(70, 70, 70);
+  color: white;
+  box-shadow: inset -1rem 0 1rem -.5rem black;
 }
 
 .info h1 {

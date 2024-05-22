@@ -1,4 +1,5 @@
 .score {
+  color: white;
   text-align: right;
   position: absolute;
   bottom: 1rem;
@@ -7,7 +8,8 @@
 
 .grid {
   padding: .1rem;
-  display: flex;
-  flex-wrap: wrap;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(153px, 1fr));
   gap: .1rem;
 }

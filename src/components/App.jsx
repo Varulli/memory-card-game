@@ -13,7 +13,7 @@ function App() {
   return (
     <>
       <div className="info">
-        <h1>Memory Card</h1>
+        <h1>Memory Game</h1>
         <p>Click consecutive unique cards to increase your score.</p>
 
         <label>
