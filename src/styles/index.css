@@ -5,7 +5,7 @@
 }
 
 :root {
-  font-size: 12px;
+  font-size: clamp(12px, 1.5vw, 16px);
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color-scheme: light dark;
   --color-primary: rgb(70, 70, 70);
