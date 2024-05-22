@@ -4,7 +4,7 @@
   min-height: 117px;
   border: none;
   position: relative;
-  transition: all .2s ease-out;
+  transition: all .1s ease-out;
 }
 
 .card figcaption {

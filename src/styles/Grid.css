@@ -8,7 +8,7 @@
 
 .grid {
   background-color: var(--color-secondary);
-  padding: .5rem .5rem .5rem 1.5rem;
+  padding: 1.5rem;
   width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(153px, 1fr));

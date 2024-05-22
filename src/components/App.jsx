@@ -20,8 +20,6 @@ function App() {
           Number of Cards:
           <input
             type="number"
-            name="number-of-cards"
-            id="number-of-cards"
             value={numCards}
             min={1}
             max={30}

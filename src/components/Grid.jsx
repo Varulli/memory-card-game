@@ -3,25 +3,33 @@ import Card from "./Card";
 import Loading from "./Loading";
 import "../styles/Grid.css";
 
+const MAX_ID = 649;
+const cache = new Map();
+
 async function fetchCardData(size) {
   const cardData = new Map();
 
   for (let i = 0; i < size; i++) {
     let id;
     do {
-      id = Math.floor(Math.random() * 649) + 1;
+      id = Math.floor(Math.random() * MAX_ID) + 1;
     } while (cardData.has(id));
 
-    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
-    const data = await response.json();
+    if (cache.has(id)) cardData.set(id, cache.get(id));
+    else {
+      const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
+      const data = await response.json();
+      const dataObj = {
+        name: data.name,
+        image:
+          data.sprites.versions["generation-v"]["black-white"].animated
+            .front_default,
+        selected: false,
+      };
 
-    cardData.set(id, {
-      name: data.name,
-      image:
-        data.sprites.versions["generation-v"]["black-white"].animated
-          .front_default,
-      selected: false,
-    });
+      cardData.set(id, dataObj);
+      cache.set(id, dataObj);
+    }
   }
 
   return cardData;
