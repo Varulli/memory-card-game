@@ -23,6 +23,6 @@
 .card:hover {
   cursor: pointer;
   z-index: 1;
-  transform: scale(1.05);
+  transform: scale(1.03);
   box-shadow: 0 0 1rem .4rem var(--color-primary-light);
 }
