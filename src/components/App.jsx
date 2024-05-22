@@ -3,7 +3,7 @@ import Grid from "./Grid";
 import "../styles/App.css";
 
 function App() {
-  const [numCards, setNumCards] = useState(12);
+  const [numCards, setNumCards] = useState(10);
 
   const handleInputChange = (e) => {
     const value = parseInt(e.target.value);
