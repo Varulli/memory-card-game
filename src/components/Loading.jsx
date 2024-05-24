@@ -14,7 +14,7 @@ function Loading() {
     return () => clearInterval(interval);
   }, []);
 
-  return <div className="loading">Loading{ellipses[index]}</div>;
+  return <h2 className="loading">Loading{ellipses[index]}</h2>;
 }
 
 export default Loading;

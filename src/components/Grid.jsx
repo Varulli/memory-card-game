@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Card from "./Card";
 import Loading from "./Loading";
+import ErrorMessage from "./ErrorMessage";
 import "../styles/Grid.css";
 
 const MAX_ID = 649;
@@ -53,7 +54,10 @@ function Grid({ size }) {
     setLoading(true);
     fetchCardData(size)
       .then((newCardData) => {
-        if (!ignore) setCardData(newCardData);
+        if (!ignore) {
+          setCardData(newCardData);
+          setError(null);
+        }
       })
       .catch((error) => {
         console.error(error);
@@ -110,7 +114,9 @@ function Grid({ size }) {
         <br />
         highscore: {highscore}
       </div>
-      {loading ? (
+      {error ? (
+        <ErrorMessage error={error} />
+      ) : loading ? (
         <Loading />
       ) : (
         getPermutation().map(({ id, name, image }) => (
