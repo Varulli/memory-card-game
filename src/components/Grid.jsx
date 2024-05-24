@@ -17,7 +17,12 @@ async function fetchCardData(size) {
 
     if (cache.has(id)) cardData.set(id, cache.get(id));
     else {
-      const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
+      const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`, {
+        mode: "cors",
+      });
+      if (!response.ok)
+        throw new Error(`Failed to fetch data. status: ${response.status}`);
+
       const data = await response.json();
       const dataObj = {
         name: data.name,
@@ -40,20 +45,26 @@ function Grid({ size }) {
   const [score, setScore] = useState(0);
   const [highscore, setHighscore] = useState(0);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     let ignore = false;
 
     setLoading(true);
-    fetchCardData(size).then((newCardData) => {
-      if (!ignore) {
-        setCardData(newCardData);
+    fetchCardData(size)
+      .then((newCardData) => {
+        if (!ignore) setCardData(newCardData);
+      })
+      .catch((error) => {
+        console.error(error);
+        setError(error);
+      })
+      .finally(() => {
         setScore(0);
         setHighscore(0);
         setLoading(false);
         // setTimeout(() => setLoading(false), 3000);
-      }
-    });
+      });
 
     return () => (ignore = true);
   }, [size]);
@@ -92,8 +103,6 @@ function Grid({ size }) {
     }
   };
 
-  const permutation = getPermutation();
-
   return (
     <div className="grid">
       <div className="score">
@@ -104,7 +113,7 @@ function Grid({ size }) {
       {loading ? (
         <Loading />
       ) : (
-        permutation.map(({ id, name, image }) => (
+        getPermutation().map(({ id, name, image }) => (
           <Card
             key={id}
             image={image}
