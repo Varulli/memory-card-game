@@ -46,7 +46,7 @@ function Grid({ size }) {
   const [score, setScore] = useState(0);
   const [highscore, setHighscore] = useState(0);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(new Error("Test error"));
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     let ignore = false;
@@ -56,7 +56,7 @@ function Grid({ size }) {
       .then((newCardData) => {
         if (!ignore) {
           setCardData(newCardData);
-          // setError(null);
+          setError(null);
         }
       })
       .catch((error) => {
@@ -74,15 +74,14 @@ function Grid({ size }) {
   }, [size]);
 
   function getPermutation() {
-    const permutation = [];
-    const idBucket = Array.from(cardData.keys());
+    const permutation = Array.from(cardData.keys()).map((id) => {
+      return {
+        id,
+        ...cardData.get(id),
+      };
+    });
 
-    while (idBucket.length > 0) {
-      const index = Math.floor(Math.random() * idBucket.length);
-      const id = idBucket.splice(index, 1)[0];
-      const { name, image } = cardData.get(id);
-      permutation.push({ id, name, image });
-    }
+    permutation.sort(() => Math.random() - 0.5);
 
     return permutation;
   }
