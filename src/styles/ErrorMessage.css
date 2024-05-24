@@ -1,6 +1,14 @@
-.loading {
+.error {
   color: var(--color-primary);
   font-weight: bold;
   padding: 1rem;
+}
+
+.error h2 {
   font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.error p {
+  font-size: 1.4rem;
 }

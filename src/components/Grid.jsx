@@ -46,7 +46,7 @@ function Grid({ size }) {
   const [score, setScore] = useState(0);
   const [highscore, setHighscore] = useState(0);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(new Error("Test error"));
 
   useEffect(() => {
     let ignore = false;
@@ -56,7 +56,7 @@ function Grid({ size }) {
       .then((newCardData) => {
         if (!ignore) {
           setCardData(newCardData);
-          setError(null);
+          // setError(null);
         }
       })
       .catch((error) => {

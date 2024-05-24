@@ -1,7 +1,9 @@
+import "../styles/ErrorMessage.css";
+
 function ErrorMessage({ error }) {
   return (
     <div className="error">
-      <h1>Failed to fetch data</h1>
+      <h2>Failed to fetch data</h2>
       <p>{"Error: " + error.message}</p>
     </div>
   );
