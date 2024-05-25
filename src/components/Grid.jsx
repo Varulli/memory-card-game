@@ -56,18 +56,16 @@ function Grid({ size }) {
       .then((newCardData) => {
         if (!ignore) {
           setCardData(newCardData);
+          setScore(0);
+          setHighscore(0);
           setError(null);
+          setLoading(false);
+          // setTimeout(() => setLoading(false), 3000);
         }
       })
       .catch((error) => {
         console.error(error);
         setError(error);
-      })
-      .finally(() => {
-        setScore(0);
-        setHighscore(0);
-        setLoading(false);
-        // setTimeout(() => setLoading(false), 3000);
       });
 
     return () => (ignore = true);
