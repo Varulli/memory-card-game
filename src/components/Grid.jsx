@@ -7,7 +7,7 @@ import "../styles/Grid.css";
 const MAX_ID = 649;
 const cache = new Map();
 
-async function fetchCardData(size) {
+async function fetchCardData(size, signal) {
   const cardData = new Map();
 
   for (let i = 0; i < size; i++) {
@@ -20,9 +20,11 @@ async function fetchCardData(size) {
     else {
       const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`, {
         mode: "cors",
+        signal,
       });
+      if (signal.aborted) return;
       if (!response.ok)
-        throw new Error(`Failed to fetch data. status: ${response.status}`);
+        throw new Error(`HTTP error. status: ${response.status}`);
 
       const data = await response.json();
       const dataObj = {
@@ -49,26 +51,31 @@ function Grid({ size }) {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    let ignore = false;
+    const abortController = new AbortController();
+    const signal = abortController.signal;
 
     setLoading(true);
-    fetchCardData(size)
-      .then((newCardData) => {
-        if (!ignore) {
+
+    (async () => {
+      try {
+        const newCardData = await fetchCardData(size, signal);
+
+        if (newCardData) {
           setCardData(newCardData);
           setScore(0);
           setHighscore(0);
           setError(null);
           setLoading(false);
-          // setTimeout(() => setLoading(false), 3000);
         }
-      })
-      .catch((error) => {
-        console.error(error);
-        setError(error);
-      });
+      } catch (error) {
+        if (!signal.aborted) {
+          console.error(error);
+          setError(error);
+        }
+      }
+    })();
 
-    return () => (ignore = true);
+    return () => abortController.abort();
   }, [size]);
 
   function getPermutation() {
